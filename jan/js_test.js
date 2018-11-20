@@ -1,4 +1,4 @@
-const userid = "1234";
+const userid = "testuser";
 
 var config = {
     apiKey: "AIzaSyBZnCFC6kt79vYROHStlhdTWWVHOrpITdQ",
@@ -16,6 +16,7 @@ var database = firebase.database();
 
 //-> this of course should be secured :)
 function submitUserRequest(uid, data) {
+
   var requestData = {
     uid: uid,
     data: data
