@@ -1,0 +1,27 @@
+#requests {
+  margin-top: 80px;
+  position: absolute;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  & > app-request-list {
+    flex-grow: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  #requests {
+    flex-direction: row;
+
+    & > app-request-list {
+      width: calc(100% - 226px);
+      position: absolute;
+    }
+
+    & > app-filter {
+      order: 2;
+    }
+  }
+}
