@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 })
 export class HomeDynamicComponent implements OnInit {
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef, private router:Router) { }
 
   ngOnInit() {
     this.data = [{type:"Bitte warten",status:"Daten werden geladen..."}]
@@ -21,6 +22,7 @@ export class HomeDynamicComponent implements OnInit {
       } else {
         localStorage.removeItem('myPage.expectSignIn')
         this.requestData = [{type:"Error :/",date:"-",status:"Bitte melden sie sich an",id:""}]
+        this.router.navigateByUrl('/login')
       }
     })
 

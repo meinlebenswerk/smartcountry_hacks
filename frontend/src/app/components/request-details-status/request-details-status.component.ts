@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-request-details-status',
@@ -7,7 +8,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 })
 export class RequestDetailsStatusComponent implements OnInit {
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef, private router:Router) { }
 
   ngOnInit() {
     this.data = {}
@@ -18,8 +19,7 @@ export class RequestDetailsStatusComponent implements OnInit {
         this.loadData();
       } else {
         localStorage.removeItem('myPage.expectSignIn')
-        // Implement logic to trigger the login dialog here or redirect to sign-in page.
-        // e.g. showDialog()
+        this.router.navigateByUrl('/login')
       }
     })
   }

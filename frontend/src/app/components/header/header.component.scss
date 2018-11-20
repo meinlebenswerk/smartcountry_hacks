@@ -37,3 +37,15 @@
     padding: 16px;
   }
 }
+
+#btn_back {
+  width: 100px;
+  height: 100px;
+  background-image: url("../../../assets/images/arrow_back.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: scale(2.0);
+  background-color: transparent;
+
+  filter: invert(1.0);
+}
