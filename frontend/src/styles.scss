@@ -1,0 +1,32 @@
+/* global styles and imports */
+@import 'assets/css/colors';
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+a.btn-primary {
+  background-color: $color-primary;
+  color: white;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+a.btn-secondary {
+  background-color: $color-secondary;
+  color: white;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
