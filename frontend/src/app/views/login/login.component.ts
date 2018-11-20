@@ -22,13 +22,14 @@ export class LoginComponent implements OnInit {
 
   performLogin(){
     firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").then(() => {
-      this.router.navigateByUrl('/home-dynamic')
+      this.router.navigateByUrl('/home-dynamic');
       //this.userdataservice.isUserLoggedIn.next(true);
     },function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
       alert(errorMessage)
-    }
+    })
+  }
 
 }
