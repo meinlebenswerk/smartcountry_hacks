@@ -12,4 +12,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  performLogin(){
+    firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").then( (error) =>{
+      if(error){
+        alert(error)
+      }
+    })
+  }
+
 }

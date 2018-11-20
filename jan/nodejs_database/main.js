@@ -27,8 +27,8 @@ firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").the
   let request = {
     uid: user.uid,
     date: Date.now(),
-    attached_documents: [],
-    type: "Personalausweisverlängerung"
+    attached_documents: ["870939328","2198639826"],
+    type: "Haus"
   }
 
   var baseRef = firebase.app().database().ref();
