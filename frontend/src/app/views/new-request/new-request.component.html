@@ -1,8 +1,107 @@
 <div id="new-request-container">
 
+  <h1>Neuen Antrag erstellen</h1>
 
-<p>
-  new-request works!
-</p>
+  <p>Kategorie:</p>
+  <select id="select-category" title="Kategorie für neuen Antrag" (ngModel)="selectedCategory">
+    <option>Personalausweis</option>
+    <option>Reisepass</option>
+    <option>Adressänderung</option>
+    <option>Namensänderung</option>
+    <option>Hochzeit</option>
+    <option>Geburt</option>
+    <option>Tod</option>
+  </select>
+
+  <div class="request-card" *ngIf="isSelected('Personalausweis')">
+    <div class="request-card-text">
+      <h2>Personalausweisbeantragung</h2>
+      <p>Bitte überprüfen Sie Ihre Angaben:</p>
+      <p>Name: John Doe</p>
+      <p>Geburtsdatum: 12.08.1992</p>
+      <p>Geburtsort: Berlin</p>
+    </div>
+    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
+  </div>
+
+  <div class="request-card" *ngIf="isSelected('Reisepass')">
+    <div class="request-card-text">
+      <h2>Reisepass-Beantragung</h2>
+      <p>Bitte überprüfen Sie Ihre Angaben:</p>
+      <p>Name: John Doe</p>
+      <p>Geburtsdatum: 12.08.1992</p>
+      <p>Geburtsort: Berlin</p>
+    </div>
+    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
+  </div>
+
+  <div class="request-card" *ngIf="isSelected('Adressänderung')">
+    <div class="request-card-text">
+      <h2>Adressänderung</h2>
+      <p>Bitte überprüfen Sie Ihre Angaben:</p>
+      <p>Name: John Doe</p>
+      <p>Geburtsdatum: 12.08.1992</p>
+      <p>Geburtsort: Berlin</p>
+      <br>
+      <p>Alte Adresse: Kurzhauser Str. 39, 10414 Berlin</p>
+      <p><span>Neue Adresse:</span> <input type="text" title="Neue Adresse"></p>
+    </div>
+    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
+  </div>
+
+  <div class="request-card" *ngIf="isSelected('Namensänderung')">
+    <div class="request-card-text">
+      <h2>Namensänderung</h2>
+      <p>Bitte überprüfen Sie Ihre Angaben:</p>
+      <p>Name: John Doe</p>
+      <p>Geburtsdatum: 12.08.1992</p>
+      <p>Geburtsort: Berlin</p>
+      <br>
+      <p><span>Neuer Name:</span> <input type="text" title="Neuer Name"></p>
+    </div>
+    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
+  </div>
+
+  <div class="request-card" *ngIf="isSelected('Hochzeit')">
+    <div class="request-card-text">
+      <h2>Hochzeit</h2>
+      <p>Bitte überprüfen Sie Ihre Angaben:</p>
+      <p>Name: John Doe</p>
+      <p>Geburtsdatum: 12.08.1992</p>
+      <p>Geburtsort: Berlin</p>
+      <br>
+      <p><span>Name des Ehepartners:</span> <input type="text" title="Name"></p>
+      <p><span>Geburtsdatum des Ehepartners:</span> <input type="text" title="Datum"></p>
+      <p><span>Geburtsort des Ehepartners:</span> <input type="text" title="Ort"></p>
+      <br>
+      <p><span>Datum der Trauung:</span> <input type="text" title="Datum"></p>
+      <p><span>Ort der Trauung:</span> <input type="text" title="Ort"></p>
+      <p><span>Neuer Familienname:</span> <input type="text" title="Name"></p>
+    </div>
+    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
+  </div>
+
+  <div class="request-card" *ngIf="isSelected('Geburt')">
+    <div class="request-card-text">
+      <h2>Geburt</h2>
+      <p><span>Name des Neugeborenen:</span> <input type="text" title="Name"></p>
+      <p><span>Geburtsdatum:</span> <input type="text" title="Datum"></p>
+      <p><span>Geburtsort:</span> <input type="text" title="Ort"></p>
+    </div>
+    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
+  </div>
+
+  <div class="request-card" *ngIf="isSelected('Tod')">
+    <div class="request-card-text">
+      <h2>Tod</h2>
+      <p><span>Name des Verstorbenen:</span> <input type="text" title="Name"></p>
+      <p><span>Geburtsdatum des Verstorbenen:</span> <input type="text" title="Geburtsdatum"></p>
+      <p><span>Geburtsort:</span> <input type="text" title="Geburtsort"></p>
+      <br>
+      <p><span>Datum des Todesfalls:</span> <input type="text" title="Datum"></p>
+      <p><span>Ort des Todesfalls:</span> <input type="text" title="Ort"></p>
+    </div>
+    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
+  </div>
 
 </div>

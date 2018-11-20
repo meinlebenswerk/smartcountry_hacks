@@ -12,4 +12,8 @@ export class NewRequestComponent implements OnInit {
   ngOnInit() {
   }
 
+  isSelected(selection: string): boolean {
+    return (<HTMLSelectElement>document.getElementById('select-category')).value === selection;
+  }
+
 }
