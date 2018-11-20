@@ -29,7 +29,7 @@ firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").the
     date: Date.now(),
     attached_documents: ["870939328","2198639826"],
     state: "In Bearbeitung",
-    type: "Antrag neuer Reisepass",
+    type: "Ausweisbeantragung",
     request_id: (Math.floor(Math.random() * 8999)+1000) + "",
     office: "Berlin Mitte",
     contact: {name: "Frau Ines Müller", telephone: 03055223344},
@@ -45,7 +45,9 @@ firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").the
   //do this if we have a new user:
   //userRef.push({full_name: "John Doe",birthday: Date.now(), birthplace: "Berlin"})
 
-  var requestRef = userRef.child('requests').push(request)
+  var requestRef = userRef.child('requests').push()
+  request.request_id = requestRef.path.pieces_[requestRef.path.pieces_.length-1]
+  requestRef.set(request)
 
   //firebase.auth().signOut()
 })

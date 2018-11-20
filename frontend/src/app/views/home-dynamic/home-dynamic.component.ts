@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,21 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeDynamicComponent implements OnInit {
 
-  constructor() { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.data = [{type:"Bitte warten",status:"Daten werden geladen..."}]
     //let thisComponent = this;
-    //get data from the interwebs :)
-    let user = firebase.auth().currentUser
-    if(user){
-      //get the data :)
-      this.initUserRequests();
-    }else{
-      this.requestData = [{type:"Error :/",date:"-",status:"Bitte melden sie sich an",id:""}]
-    }
 
-    //this.initUserRequests();
+    //register a firebase auth listener -> this is used to get data
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        localStorage.setItem('myPage.expectSignIn', '1')
+        this.initUserRequests();
+      } else {
+        localStorage.removeItem('myPage.expectSignIn')
+        this.requestData = [{type:"Error :/",date:"-",status:"Bitte melden sie sich an",id:""}]
+      }
+    })
 
   }
 
@@ -52,9 +53,12 @@ export class HomeDynamicComponent implements OnInit {
       }
 
       thisComponent.requestData = dataWithKeys;
-  })
+  }).then(this.updateComponent_now.bind(this))
+  }
 
-    //firebase.auth().signOut()
+  updateComponent_now(){
+    //HACK: call the update now!
+    this.changeDetectorRef.detectChanges();
   }
 
 }

@@ -14,7 +14,7 @@
             <p>Bearbeitungs-ID: {{request.request_id}}</p>
           </div>
 
-          <a class="request-card-btn btn-primary" routerLink="request">Details</a>
+        <a class="request-card-btn btn-primary" (click)="show_details(request.request_id)">Details</a>
         </div>
       </li>
   </ul>

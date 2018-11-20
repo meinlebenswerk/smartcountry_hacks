@@ -1,0 +1,24 @@
+<h1 id="request-details-caption">{{data.type}}</h1>
+
+<div id="request-details-person">
+  <div>
+    <h3>Antragsteller:</h3>
+    <p>Name: John Doe</p>
+    <p>Geburtsdatum: 20.11.1992</p>
+    <p>Geburtsort: Berlin</p>
+  </div>
+  <!-- test image from https://www.flickr.com/photos/ter-burg/44772036772 -->
+  <div id="person-image">
+    <img src="../../../assets/images/profile-pic.jpg">
+  </div>
+</div>
+
+<div id="request-details-status">
+  <h3>Auftragsdetails:</h3>
+  <p>Bearbeitungsstatus:{{data.state}}</p>
+  <p>Bearbeitungsnummer: {{data.request_id}}</p>
+  <p>Bürgeramt: {{data.office}}</p>
+  <p>Kontaktperson: {{data.contact.name}}</p>
+  <p>Telefonnummer: {{data.contact.telephone}}</p>
+  <p>Zusätzliche Hinweise: {{data.additional_info}}</p>
+</div>
