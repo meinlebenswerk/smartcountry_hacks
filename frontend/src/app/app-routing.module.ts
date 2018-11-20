@@ -22,7 +22,7 @@ const routes: Routes = [
     component: RequestDetailsComponent
   },
   {
-    path: 'user-requests',
+    path: 'home-dynamic',
     component: HomeDynamicComponent
   },
   {

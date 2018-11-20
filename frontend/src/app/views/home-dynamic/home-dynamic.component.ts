@@ -10,13 +10,12 @@ export class HomeDynamicComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.data = [{type:"Bitte warten",status:"daten werden geladen..."}]
+    this.data = [{type:"Bitte warten",status:"Daten werden geladen..."}]
     //let thisComponent = this;
     //get data from the interwebs :)
     let user = firebase.auth().currentUser
     if(user){
       //get the data :)
-      console.log("logged in")
       this.initUserRequests();
     }else{
       this.requestData = [{type:"Error :/",date:"-",status:"Bitte melden sie sich an",id:""}]
@@ -45,9 +44,15 @@ export class HomeDynamicComponent implements OnInit {
          obj._key = key;
          return obj;
       });
+
+      //translate all the dates.
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      for(let i=0;i<dataWithKeys.length;i++){
+        dataWithKeys[i].date = new Date(dataWithKeys[i].date).toLocaleDateString('de-DE', options);
+      }
+
       thisComponent.requestData = dataWithKeys;
-      console.log(thisComponent)
-    })
+  })
 
     //firebase.auth().signOut()
   }
