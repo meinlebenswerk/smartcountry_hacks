@@ -33,10 +33,8 @@ export class FilterComponent implements OnInit {
     }
   }
 
-  filterHotels() {
-  }
-
-  getSelectValues(select) {
+  filterByStatus(status) {    // all, open, done
+    this.filterService.applyFilter(status);
   }
 
 }

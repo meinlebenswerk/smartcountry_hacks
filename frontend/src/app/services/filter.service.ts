@@ -4,40 +4,50 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class FilterService {
-  distMin = 0;
-  distMax = 8000;
-  rating = 0;
-  priceCategory = '';
-  amenities = [];
+
+  statusInProgressEquivalents = [
+    'In Bearbeitung', 'in Bearbeitung',
+    'Wird bearbeitet', 'wird bearbeitet',
+    'Offen', 'offen',
+    'Ausstehend', 'ausstehend',
+    'In Progress', 'in progress'
+  ];
+
+  statusDoneEquivalents = [
+    'Abgeschlossen', 'abgeschlossen',
+    'Geschlossen', 'geschlossen',
+    'Erledigt', 'erledigt',
+    'Bearbeitet', 'bearbeitet',
+    'Fertiggestellt', 'fertiggestellt'
+  ];
+
+  currentStatusFilter = 'all';  // all, open, done
 
   constructor() {
   }
 
-  applyFilters(distMin, distMax, rating, price, amenities) {
-    this.distMin = distMin;
-    this.distMax = distMax;
-    this.rating = rating;
-    this.priceCategory = price;
-    this.amenities = amenities;
+  applyFilter(statusFilter) {
+    this.currentStatusFilter = statusFilter;
   }
 
-  getDistMin() {
-    return this.distMin;
+  getCurrentStatusFilter() {
+    return this.currentStatusFilter;
   }
 
-  getDistMax() {
-    return this.distMax;
+  isFilteredOut(status):boolean {
+    if (this.currentStatusFilter === 'all') {
+      return false;
+    } else if ((this.currentStatusFilter === 'open') &&
+      (this.statusInProgressEquivalents.includes(status))) {
+      return false;
+    } else {
+      if ((this.currentStatusFilter === 'done') &&
+        (this.statusDoneEquivalents.includes(status))) {
+        return false;
+      } else {
+        return true;
+      }
+    }
   }
 
-  getRating() {
-    return this.rating;
-  }
-
-  getPriceCat() {
-    return this.priceCategory;
-  }
-
-  getAmenities() {
-    return this.amenities;
-  }
 }

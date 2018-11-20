@@ -1,5 +1,5 @@
 <div id="request-list-container">
-  <div class="request-card">
+  <div class="request-card" *ngIf="!filterService.isFilteredOut('In Bearbeitung')"> <!--TODO replace with real data-->
     <div class="request-card-image">
       <!--<img src="{{hotel.images[0]}}" width="100%">-->
     </div>
@@ -12,7 +12,7 @@
     <a class="request-card-btn btn-primary" routerLink="/request-details">Details</a>
   </div>
 
-  <div class="request-card">
+  <div class="request-card" *ngIf="!filterService.isFilteredOut('In Bearbeitung')">
     <div class="request-card-image">
       <!--<img src="{{hotel.images[0]}}" width="100%">-->
     </div>
@@ -25,7 +25,7 @@
     <a class="request-card-btn btn-primary" routerLink="/request-details">Details</a>
   </div>
 
-  <div class="request-card">
+  <div class="request-card" *ngIf="!filterService.isFilteredOut('Abgeschlossen')">
     <div class="request-card-image">
       <!--<img src="{{hotel.images[0]}}" width="100%">-->
     </div>
