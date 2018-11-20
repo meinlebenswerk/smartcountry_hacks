@@ -10,17 +10,20 @@ export class LoginComponent implements OnInit {
 
   constructor(private router:Router) {
   }
-
   ngOnInit() {
   }
 
   login() {
     document.getElementById('loading-ring').style.display = 'inline-block';
-    setTimeout(() => {this.goToNextPage()}, 1000);
+    setTimeout(() => {this.performLogin()}, 1000);
   }
 
-  goToNextPage() {
-    this.router.navigate(['/home']);
-  }
+  performLogin(){
+    firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").then(() => {this.router.navigateByUrl('/home-dynamic');},function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage)
+    }
 
 }

@@ -27,8 +27,13 @@ firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").the
   let request = {
     uid: user.uid,
     date: Date.now(),
-    attached_documents: [],
-    type: "Personalausweisverlängerung"
+    attached_documents: ["870939328","2198639826"],
+    state: "In Bearbeitung",
+    type: "Antrag neuer Reisepass",
+    request_id: (Math.floor(Math.random() * 8999)+1000) + "",
+    office: "Berlin Mitte",
+    contact: {name: "Frau Ines Müller", telephone: 03055223344},
+    additional_info: ""
   }
 
   var baseRef = firebase.app().database().ref();
@@ -36,9 +41,13 @@ firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").the
 
   // Create a new ref and log it’s push key
   var userRef = usersRef.child(user.uid);
+
+  //do this if we have a new user:
+  //userRef.push({full_name: "John Doe",birthday: Date.now(), birthplace: "Berlin"})
+
   var requestRef = userRef.child('requests').push(request)
 
-  firebase.auth().signOut()
+  //firebase.auth().signOut()
 })
 /*
 var config = {

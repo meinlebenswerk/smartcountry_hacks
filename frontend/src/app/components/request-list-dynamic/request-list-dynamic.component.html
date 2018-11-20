@@ -1,0 +1,20 @@
+<div id="request-list-container">
+  <ul>
+    <li *ngFor="let request of data" style="list-style-type: none">
+        <div class="request-card">
+
+          <div class="request-card-image">
+            <!--<img src="{{hotel.images[0]}}" width="100%"> -->
+          </div>
+
+          <div class="request-card-text">
+            <h3>{{request.type}}</h3>
+            <p>Datum der Antragstellung: {{request.date}}</p>
+            <p>Status: {{request.state}}</p>
+            <p>Bearbeitungs-ID: {{request.request_id}}</p>
+          </div>
+
+          <a class="request-card-btn btn-primary" routerLink="request">Details</a>
+        </div>
+      </li>
+  </ul>

@@ -13,7 +13,6 @@ firebase.initializeApp(config);
 //reference to the db service
 var database = firebase.database();
 
-
 //-> this of course should be secured :)
 function submitUserRequest(uid, data) {
 
