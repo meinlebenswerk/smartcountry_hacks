@@ -1,6 +1,10 @@
 <div id="login-container">
-  <div id="login-id" routerLink="/home">
+  <div id="login-id" (click)="login()">
     <div id="login-id-image"><div></div></div>
-    <div id="login-id-caption">Ausweis scannen</div>
+    <div id="login-id-caption">
+      <div id="loading-ring"></div>
+      <span>Ausweis scannen</span>
+    </div>
   </div>
 </div>
+

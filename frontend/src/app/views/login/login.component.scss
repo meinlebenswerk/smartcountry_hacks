@@ -37,6 +37,9 @@
   width: 50%;
   text-align: center;
   font-size: xx-large;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -54,5 +57,34 @@
     height: 78%;
     width: 70%;
     left: 15%;
+  }
+}
+
+
+#loading-ring {
+  //display: inline-block;
+  width: 64px;
+  height: 64px;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  display: none;
+}
+#loading-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #009;
+  border-color: #009 transparent #009 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
