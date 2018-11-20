@@ -13,6 +13,7 @@ import { RequestListComponent } from './components/request-list/request-list.com
 import { RequestListDynamicComponent } from './components/request-list-dynamic/request-list-dynamic.component';
 import { RequestDetailsComponent } from './views/request-details/request-details.component';
 import { NewRequestComponent } from './views/new-request/new-request.component';
+import { RequestDetailsStatusComponent } from './components/request-details-status/request-details-status.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NewRequestComponent } from './views/new-request/new-request.component';
     RequestListComponent,
     RequestListDynamicComponent,
     RequestDetailsComponent,
-    NewRequestComponent
+    NewRequestComponent,
+    RequestDetailsStatusComponent
   ],
   imports: [
     BrowserModule,

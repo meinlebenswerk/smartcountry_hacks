@@ -9,17 +9,22 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(private router:Router) {
+
   }
   ngOnInit() {
+
   }
 
   login() {
     document.getElementById('loading-ring').style.display = 'inline-block';
-    setTimeout(() => {this.performLogin()}, 1000);
+    setTimeout(() => {this.performLogin()}, 10);
   }
 
   performLogin(){
-    firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").then(() => {this.router.navigateByUrl('/home-dynamic');},function(error) {
+    firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").then(() => {
+      this.router.navigateByUrl('/home-dynamic')
+      //this.userdataservice.isUserLoggedIn.next(true);
+    },function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
