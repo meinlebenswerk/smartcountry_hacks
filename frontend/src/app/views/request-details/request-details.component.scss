@@ -1,0 +1,41 @@
+#request-details-container {
+  margin-top: 80px;
+  position: absolute;
+  width: 80%;
+  margin-left: 10%;
+
+  & > div {
+    padding: 12px 28px;
+    margin: 18px 0;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+}
+
+#request-details-person {
+  display: flex;
+  flex-direction: column;
+
+  & > div:first-child {
+    flex-grow: 1;
+  }
+}
+
+#person-image {
+  height: 200px;
+
+  & > img {
+    height: 100%;
+    border: 1px solid gray;
+  }
+}
+
+#request-details-caption {
+  overflow: auto;
+}
+
+@media (min-width: 768px) {
+  #request-details-person {
+    flex-direction: row;
+  }
+}
