@@ -43,7 +43,8 @@
 }
 
 #sign-canvas {
-  width: 45%;
+  width: 100%;
+  height: 150px;
   margin-left: 50%;
   background-color: #fff;
 
@@ -53,6 +54,10 @@
 }
 
 @media (min-width: 768px) {
+  #sign-canvas {
+    width: 55%;
+  }
+
   .request-card {
     flex-direction: column;
   }
