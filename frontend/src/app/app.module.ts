@@ -27,6 +27,7 @@ import { UserdataService } from './services/userdata.service';
 
 //test service::
 import { AuthService } from './services/auth.service';
+import { RequestEndComponent } from './component/request-end/request-end.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AuthService } from './services/auth.service';
     RequestListDynamicComponent,
     RequestDetailsComponent,
     NewRequestComponent,
-    RequestDetailsStatusComponent
+    RequestDetailsStatusComponent,
+    RequestEndComponent
   ],
   imports: [
     BrowserModule,
