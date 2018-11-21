@@ -61,7 +61,7 @@ export class HomeDynamicComponent implements OnInit {
     if(text === ""){
       return;
     }
-    
+
     let note = new Notification(text)
   }
 
@@ -78,7 +78,6 @@ export class HomeDynamicComponent implements OnInit {
         for(let ii=0;ii<this.requestData.length;ii++){
           //order !
           if(data[i].request_id == this.requestData[ii].request_id){
-            console.log()
             if(data[i].state != this.requestData[ii].state){
               updateString += `Neuer Status fuer ${data[i].type} (ID: ${data[i].request_id}): ${data[i].state} \n`
             }
@@ -86,10 +85,15 @@ export class HomeDynamicComponent implements OnInit {
           }
         }
       }
-
-      console.log(updateString)
       this.sendNotification(updateString)
     }
+
+    //format date :)
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    for(let i=0;i<data.length;i++){
+      data[i].date_formatted = new Date(data[i].date).toLocaleDateString('de-DE', options);
+    }
+
 
     this.requestData = data;
     this.updateComponent_now();

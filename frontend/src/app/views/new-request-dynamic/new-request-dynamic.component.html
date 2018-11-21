@@ -10,115 +10,16 @@
     <h2>{{possibleRequests[selectedCategory].longname}}</h2>
 
     <div *ngFor="let question of questionData;let index = index;">
-      <div *ngIf="possibleRequests[selectedCategory].isQuestionActive[index]">
-        <p>{{question.longname}}</p>
+      <div class="request-card-text" *ngIf="possibleRequests[selectedCategory].isQuestionActive[index]">
+        <p *ngIf="!(question.name === 'signature')"><span>{{question.longname}}</span>
         <input [(ngModel)]="dataModel[index]" type="{{question.type}}" class="form-control" placeholder="---">
+        </p>
+        <p *ngIf="(question.name === 'signature')"> <span>{{question.longname}}</span>
+          <canvas id="sign-canvas"></canvas>
+        </p>
       </div>
     </div>
     <a class="request-card-btn btn-primary" (click)="submitButtonListener()">Antrag stellen</a>
   </div>
 
 </div>
-
-<!-- <div id="new-request-container">
-
-
-  <select id="select-category" title="" [(ngModel)]="selectedCategory">
-    <option *ngFor="request in possibleRequests" value="{{request.type}}">{{request.type}}</option>
-  </select>
-
-  <div class="request-card" *ngIf="isSelected('Personalausweis')">
-    <div class="request-card-text">
-      <h2>Personalausweisbeantragung</h2>
-      <p>Bitte überprüfen Sie Ihre Angaben:</p>
-      <form onsubmit="alert('submit!');return false">
-        Name: <input type="text" name="fullname" value="John Doe">
-        Geburtsdatum: <input type="date" name="birthdate">
-        Geburtsort: <input type="text" name="birthplace" value="Berlin">
-        Wohnort: <input type="text" name="address" value="Berlin">
-      </form>
-    </div>
-
-  </div>
-
-  <div class="request-card" *ngIf="isSelected('Reisepass')">
-    <div class="request-card-text">
-      <h2>Reisepass-Beantragung</h2>
-      <p>Bitte überprüfen Sie Ihre Angaben:</p>
-      <p>Name: John Doe</p>
-      <p>Geburtsdatum: 12.08.1992</p>
-      <p>Geburtsort: Berlin</p>
-    </div>
-    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
-  </div>
-
-  <div class="request-card" *ngIf="isSelected('Addressänderung')">
-    <div class="request-card-text">
-      <h2>Adressänderung</h2>
-      <p>Bitte überprüfen Sie Ihre Angaben:</p>
-      <p>Name: John Doe</p>
-      <p>Geburtsdatum: 12.08.1992</p>
-      <p>Geburtsort: Berlin</p>
-      <br>
-      <p>Alte Adresse: Kurzhauser Str. 39, 10414 Berlin</p>
-      <p><span>Neue Adresse:</span> <input type="text" title="Neue Adresse"></p>
-    </div>
-    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
-  </div>
-
-  <div class="request-card" *ngIf="isSelected('Namensänderung')">
-    <div class="request-card-text">
-      <h2>Namensänderung</h2>
-      <p>Bitte überprüfen Sie Ihre Angaben:</p>
-      <p>Name: John Doe</p>
-      <p>Geburtsdatum: 12.08.1992</p>
-      <p>Geburtsort: Berlin</p>
-      <br>
-      <p><span>Neuer Name:</span> <input type="text" title="Neuer Name"></p>
-    </div>
-    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
-  </div>
-
-  <div class="request-card" *ngIf="isSelected('Hochzeit')">
-    <div class="request-card-text">
-      <h2>Hochzeit</h2>
-      <p>Bitte überprüfen Sie Ihre Angaben:</p>
-      <p>Name: John Doe</p>
-      <p>Geburtsdatum: 12.08.1992</p>
-      <p>Geburtsort: Berlin</p>
-      <br>
-      <p><span>Name des Ehepartners:</span> <input type="text" title="Name"></p>
-      <p><span>Geburtsdatum des Ehepartners:</span> <input type="text" title="Datum"></p>
-      <p><span>Geburtsort des Ehepartners:</span> <input type="text" title="Ort"></p>
-      <br>
-      <p><span>Datum der Trauung:</span> <input type="text" title="Datum"></p>
-      <p><span>Ort der Trauung:</span> <input type="text" title="Ort"></p>
-      <p><span>Neuer Familienname:</span> <input type="text" title="Name"></p>
-    </div>
-    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
-  </div>
-
-  <div class="request-card" *ngIf="isSelected('Geburt')">
-    <div class="request-card-text">
-      <h2>Geburt</h2>
-      <p><span>Name des Neugeborenen:</span> <input type="text" title="Name"></p>
-      <p><span>Geburtsdatum:</span> <input type="text" title="Datum"></p>
-      <p><span>Geburtsort:</span> <input type="text" title="Ort"></p>
-    </div>
-    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
-  </div>
-
-  <div class="request-card" *ngIf="isSelected('Tod')">
-    <div class="request-card-text">
-      <h2>Tod</h2>
-      <p><span>Name des Verstorbenen:</span> <input type="text" title="Name"></p>
-      <p><span>Geburtsdatum des Verstorbenen:</span> <input type="text" title="Geburtsdatum"></p>
-      <p><span>Geburtsort:</span> <input type="text" title="Geburtsort"></p>
-      <br>
-      <p><span>Datum des Todesfalls:</span> <input type="text" title="Datum"></p>
-      <p><span>Ort des Todesfalls:</span> <input type="text" title="Ort"></p>
-    </div>
-    <a class="request-card-btn btn-primary" routerLink="/request-details">Antrag stellen</a>
-  </div>
-
-</div> -->

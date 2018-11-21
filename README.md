@@ -5,6 +5,7 @@
 ## The backend
 
 All backend code is provided by firebase and its configuration is contained in the /firebase folder.
+But as of now its basically just used to deploy the website to firebase to test on mobile.
 
 
 ## The frontend
