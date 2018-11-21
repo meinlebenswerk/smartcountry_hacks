@@ -1,50 +1,29 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <title>Hello</title>
-    <link rel="manifest" href="manifest.json">
-    <!-- Older Chrome configuration -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Notes">
-    <link rel="icon"
-          sizes="192x192"
-          href="bower_components/note-app/common/images/icon-4x.png">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>IDTool</title>
+  <base href="/">
 
-    <style>
-      body {
-        margin: 0;
-      }
-    </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+</head>
+<body>
+  <app-root></app-root>
 
-    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="bower_components/web-animations-js/web-animations.min.js"></script>
-    <link rel="import" href="bower_components/platinum-sw/platinum-sw-elements.html">
-    <link rel="import" href="bower_components/polymerfire/firebase-app.html">
-    <link rel="import" href="note-app.html">
-  </head>
-  <body>
-
-    <platinum-sw-register
-      auto-register
-      skip-waiting
-      clients-claim
-      reload-on-install
-      href="sw-import.js">
-    <platinum-sw-cache
-        default-cache-strategy="networkFirst">
-    </platinum-sw-cache>
-  </platinum-sw-register>
-
-  <firebase-app
-    name="note"
-    api-key: "AIzaSyBZnCFC6kt79vYROHStlhdTWWVHOrpITdQ"
-    auth-domain: "http://localhost:5000"
-    database-url: "https://localhost:9000">
-  </firebase-app>
-
-  <note-app></note-app>
-
-  </body>
+  <!-- <script>
+    //set up basic firebase::
+    var config = {
+        apiKey: "AIzaSyBZnCFC6kt79vYROHStlhdTWWVHOrpITdQ",
+        authDomain: "smartcountry-n12.firebaseapp.com",
+        databaseURL: "https://smartcountry-n12.firebaseio.com",
+        projectId: "smartcountry-n12",
+        storageBucket: "smartcountry-n12.appspot.com",
+        messagingSenderId: "709119497178"
+      };
+    firebase.initializeApp(config);
+  </script> -->
+<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
 </html>

@@ -1,6 +1,6 @@
 <details id="filters" [attr.open]="screenWidth>768 ? '' : null">
   <summary><h3>Services</h3></summary>
-  <p id="new-request" routerLink="/new-request">+ Neuer Antrag</p>
+  <p id="new-request" routerLink="/new-request-dynamic">+ Neuer Antrag</p>
   <p id="open-requests" (click)="filterByStatus('open')">&#x25B7; Offene Anträge</p>
   <p id="closed-requests" (click)="filterByStatus('done')">&#x25B7; Geschlossene Anträge</p>
   <p id="all-requests" (click)="filterByStatus('all')">&#x25B7; Alle Anträge</p>

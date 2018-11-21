@@ -1,3 +1,6 @@
+//This hack enables Chrome Notification fors Typescript.
+declare var Notification: any;
+
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
@@ -54,13 +57,40 @@ export class HomeDynamicComponent implements OnInit {
     this.db.list('users/'+uid+'/requests').valueChanges().subscribe(this.requestDataUpdateHandler.bind(this))
   }
 
-  requestDataUpdateHandler(data){
-    //TODO: compare this data to our cached data -> notify!
-    if(this.requestData){
-
-    }else{
-
+  sendNotification(text){
+    if(text === ""){
+      return;
     }
+    
+    let note = new Notification(text)
+  }
+
+  requestDataUpdateHandler(data){
+    //compare this data to our cached data -> notify!
+
+    let updateString = "";
+    if(data.length > this.requestData.length){
+      console.log('new requests loaded successfully.')
+      updateString += "Neuer Antrag wurde erfolgreich erstellt!"
+    }else{
+      //This is really bad hahaha -> just need to match keys. Should be okay for a demo though.
+      for(let i=0;i<data.length;i++){
+        for(let ii=0;ii<this.requestData.length;ii++){
+          //order !
+          if(data[i].request_id == this.requestData[ii].request_id){
+            console.log()
+            if(data[i].state != this.requestData[ii].state){
+              updateString += `Neuer Status fuer ${data[i].type} (ID: ${data[i].request_id}): ${data[i].state} \n`
+            }
+            break;
+          }
+        }
+      }
+
+      console.log(updateString)
+      this.sendNotification(updateString)
+    }
+
     this.requestData = data;
     this.updateComponent_now();
   }

@@ -1,0 +1,65 @@
+#new-request-container {
+  margin-top: 80px;
+  position: absolute;
+  width: 80%;
+  margin-left: 10%;
+
+  & > p {
+    display: inline-block;
+    margin-right: 12px;
+  }
+}
+
+.request-card {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.request-card-text > h2 {
+  overflow: auto;
+}
+
+.request-card-text > p > span {
+  display: inline-block;
+  width: 250px;
+}
+
+.request-card-text > p > input {
+  width: 100%;
+}
+
+.request-card-btn {
+  font-size: large;
+  text-align: center;
+  margin-top: 16px;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .request-card {
+    flex-direction: row;
+  }
+
+  .request-card-text {
+    flex-grow: 1;
+    margin-left: 16px;
+    overflow-y: auto;
+  }
+
+  .request-card-text > p > input {
+    width: 40%;
+  }
+
+  .request-card-btn {
+    align-self: flex-end;
+    margin: 8px;
+    padding: 12px 18px;
+  }
+}

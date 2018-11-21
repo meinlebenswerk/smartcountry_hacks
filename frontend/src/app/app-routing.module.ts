@@ -7,6 +7,7 @@ import {HomeDynamicComponent} from './views/home-dynamic/home-dynamic.component'
 import {LoginComponent} from "./views/login/login.component";
 import {RequestDetailsComponent} from "./views/request-details/request-details.component";
 import {NewRequestComponent} from "./views/new-request/new-request.component";
+import { NewRequestDynamicComponent } from './views/new-request-dynamic/new-request-dynamic.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'new-request',
     component: NewRequestComponent
+  },
+  {
+    path: 'new-request-dynamic',
+    component: NewRequestDynamicComponent
   },
   {
     path: '**',

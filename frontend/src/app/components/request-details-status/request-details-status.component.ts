@@ -16,6 +16,8 @@ export class RequestDetailsStatusComponent implements OnInit {
   data: any;
   user: any;
 
+  firstUpdate: boolean = true;
+
   constructor(private changeDetectorRef: ChangeDetectorRef, private router:Router, private auth: AuthService, public db: AngularFireDatabase) { }
 
   ngOnInit() {
@@ -39,7 +41,24 @@ export class RequestDetailsStatusComponent implements OnInit {
     this.db.object(path).valueChanges().subscribe(this.dataUpdateHandler.bind(this))
   }
 
+  sendNotification(text){
+    if(text === ""){
+      return;
+    }
+    let note = new Notification(text)
+  }
+
   dataUpdateHandler(data){
+    if(!this.firstUpdate){
+      let updateString = "";
+      if(data.state != this.data.state){
+        updateString += `Neuer Status fuer ${data.type} (ID: ${data.request_id}): ${data.state} \n`
+      }
+      this.sendNotification(updateString)
+    }else{
+      this.firstUpdate = false
+    }
+
     this.data = data
     this.updateComponent_now()
   }

@@ -1,0 +1,39 @@
+{
+  "rdata" : [
+    {
+      "type":"Personalausweis",
+      "longname":"Personalausweis beantragen/verlängern:",
+      "isQuestionActive": [true,true,true,false]
+    },
+    {
+      "type":"Reisepass",
+      "longname":"Reisepass beantragen/verlängern:",
+      "isQuestionActive": [true,true,true,false]
+    },
+    {
+      "type":"Addressänderung",
+      "longname":"Addressänderung beantragen:",
+      "isQuestionActive": [true,true,true,true]
+    }],
+  "qdata" : [
+    {
+      "name":"fullname",
+      "longname":"Name:",
+      "type": "value"
+    },
+    {
+      "name":"birthday",
+      "longname":"Geburtstag:",
+      "type": "date"
+    },
+    {
+      "name":"address",
+      "longname":"Address:",
+      "type": "value"
+    },
+    {
+      "name":"old_address",
+      "longname":"alte Addresse:",
+      "type": "value"
+    }]
+}

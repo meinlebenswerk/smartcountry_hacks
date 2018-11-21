@@ -25,7 +25,12 @@ export class LoginComponent implements OnInit {
 
   performLogin(){
     this.auth.loginWithEmail().then(() => {
+
+      Notification.requestPermission().then(function(result) {
+      });
+
       this.router.navigateByUrl('/home-dynamic');
+
     },function(error) {
       // Handle Errors here.
       var errorCode = error.code;

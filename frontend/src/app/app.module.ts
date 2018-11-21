@@ -15,6 +15,7 @@ import { RequestListDynamicComponent } from './components/request-list-dynamic/r
 import { RequestDetailsComponent } from './views/request-details/request-details.component';
 import { NewRequestComponent } from './views/new-request/new-request.component';
 import { RequestDetailsStatusComponent } from './components/request-details-status/request-details-status.component';
+import { NewRequestDynamicComponent } from './views/new-request-dynamic/new-request-dynamic.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -42,7 +43,8 @@ import { RequestEndComponent } from './component/request-end/request-end.compone
     RequestDetailsComponent,
     NewRequestComponent,
     RequestDetailsStatusComponent,
-    RequestEndComponent
+    RequestEndComponent,
+    NewRequestDynamicComponent
   ],
   imports: [
     BrowserModule,
