@@ -1,6 +1,7 @@
 # IDTool
 
 ### Hackathon project for SmartCountry{hacks} in Berlin
+#### by team "A Small Loan of a Million $'s"
 
 ## The backend
 
