@@ -23,12 +23,11 @@ import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { environment } from './../environments/environment';
 
 
-//userdata service:
+//userdata/auth services:
 import { UserdataService } from './services/userdata.service';
-
-//test service::
 import { AuthService } from './services/auth.service';
-import { RequestEndComponent } from './component/request-end/request-end.component';
+
+//Pipe for sorting data in main menu:
 import { RequestsortPipe } from './pipes/requestsort.pipe';
 
 @NgModule({
@@ -44,7 +43,6 @@ import { RequestsortPipe } from './pipes/requestsort.pipe';
     RequestDetailsComponent,
     NewRequestComponent,
     RequestDetailsStatusComponent,
-    RequestEndComponent,
     NewRequestDynamicComponent,
     RequestsortPipe
   ],

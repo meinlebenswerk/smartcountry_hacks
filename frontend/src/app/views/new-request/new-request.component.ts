@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-request.component.scss']
 })
 export class NewRequestComponent implements OnInit {
-
+  selectedCategory:any;
+  
   constructor() { }
 
   ngOnInit() {

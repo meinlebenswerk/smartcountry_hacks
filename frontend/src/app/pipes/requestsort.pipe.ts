@@ -19,6 +19,4 @@ export class RequestsortPipe implements PipeTransform {
     });
     return array;
   }
-  }
-
 }

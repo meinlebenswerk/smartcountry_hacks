@@ -80,8 +80,8 @@ export class NewRequestDynamicComponent implements OnInit {
     this.canvas = document.getElementById("sign-canvas");
     this.signaturePad = new SignaturePad(this.canvas);
 
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
+    window.addEventListener("resize", this.resizeCanvas.bind(this));
+    this.resizeCanvas();
   }
 
   submitButtonListener(){

@@ -9,7 +9,7 @@ import {FilterService} from '../../services/filter.service'
 })
 export class RequestListComponent implements OnInit {
 
-  constructor(private httpClient:HttpClient, private filterService:FilterService) {
+  constructor(private httpClient:HttpClient, public filterService:FilterService) {
   }
 
   ngOnInit() {

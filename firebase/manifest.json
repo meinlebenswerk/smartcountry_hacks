@@ -1,0 +1,25 @@
+{
+  "name": "smartcountry_n12",
+  "short_name": "N°12",
+  "description": "testing bois",
+  "icons": [{
+    "src": "assets/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    } {
+      "src": "assets/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }, {
+      "src": "assets/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#00a8e6",
+  "permissions": {
+    "desktop-notification":{}
+  }
+}
