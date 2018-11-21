@@ -18,3 +18,9 @@ Similar to Contact Details. User can ask for address of some office by typing so
 
 ### No Help
 If the bot can't find any useful answer for the user, it simply replies **"Sorry. I can't help you with that."**
+
+
+## Useful Links
+
+- https://github.com/rubenlagus/TelegramBots/wiki/Getting-Started
+- https://github.com/MonsterDeveloper/java-telegram-bot-tutorial/blob/master/lesson-6.-inline-keyboards-and-editing-message's-text.md
