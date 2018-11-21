@@ -1,29 +1,31 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
+import { AuthService } from './../../services/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
+  user = null;
+  //
+  constructor(private router:Router, private auth: AuthService) {}
 
-  constructor(private router:Router) {
-
-  }
   ngOnInit() {
-
+    this.auth.getAuthState().subscribe( (user) => this.user = user);
   }
 
   login() {
     document.getElementById('loading-ring').style.display = 'inline-block';
-    setTimeout(() => {this.performLogin()}, 10);
+    setTimeout(this.performLogin.bind(this), 100);
   }
 
   performLogin(){
-    firebase.auth().signInWithEmailAndPassword("john.doe@email.com", "password").then(() => {
+    this.auth.loginWithEmail().then(() => {
       this.router.navigateByUrl('/home-dynamic');
-      //this.userdataservice.isUserLoggedIn.next(true);
     },function(error) {
       // Handle Errors here.
       var errorCode = error.code;

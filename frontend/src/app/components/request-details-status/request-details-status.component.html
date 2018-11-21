@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div id="request-details-status">
+  <div id="request-details-status" *ngIf="data.contact!=undefined">
     <h3>Auftragsdetails:</h3>
     <p>Bearbeitungsstatus:{{data.state}}</p>
     <p>Bearbeitungsnummer: {{data.request_id}}</p>

@@ -1,21 +1,36 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
+import { AngularFireDatabase } from '@angular/fire/database';
+import * as firebase from 'firebase/app';
+
+import { AuthService } from './../../services/auth.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home-dynamic.component.html',
   styleUrls: ['./home-dynamic.component.scss']
 })
 export class HomeDynamicComponent implements OnInit {
+  requestData: any[];
+  user: any;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private router:Router) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef, private router:Router, private auth: AuthService, public db: AngularFireDatabase) { }
 
   ngOnInit() {
-    this.data = [{type:"Bitte warten",status:"Daten werden geladen..."}]
-    //let thisComponent = this;
+    this.requestData = [{type:"Bitte warten",status:"Daten werden geladen..."}]
 
     //register a firebase auth listener -> this is used to get data
-    firebase.auth().onAuthStateChanged(user => {
+    //this.initUserRequests();
+
+    this.auth.getAuthState().subscribe((user) => {
+      this.user = user
+      if(this.user){
+        this.initUserRequests()
+      }
+    });
+    /*
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         localStorage.setItem('myPage.expectSignIn', '1')
         this.initUserRequests();
@@ -25,37 +40,29 @@ export class HomeDynamicComponent implements OnInit {
         this.router.navigateByUrl('/login')
       }
     })
+    */
 
   }
 
   initUserRequests() {
     let thisComponent = this;
-    var user = firebase.auth().currentUser
-
     thisComponent.requestData = [{type:"Bitte warten.",date:"-",status:"Daten werden geladen",id:""}]
 
-    var baseRef = firebase.app().database().ref();
-    var usersRef = baseRef.child('users');
+    let uid = this.user.uid
 
-    var userRef = usersRef.child(user.uid);
+    //var ref = this.db.database().ref().child('users').child('uid')
+    this.db.list('users/'+uid+'/requests').valueChanges().subscribe(this.requestDataUpdateHandler.bind(this))
+  }
 
-    //reformat the data from Firebase in an JS object/array :)
-    var requests = userRef.child('requests').once('value').then((snap) => {
-      let data = snap.val();
-      let dataWithKeys = Object.keys(data).map((key) => {
-         var obj = data[key];
-         obj._key = key;
-         return obj;
-      });
+  requestDataUpdateHandler(data){
+    //TODO: compare this data to our cached data -> notify!
+    if(this.requestData){
 
-      //translate all the dates.
-      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      for(let i=0;i<dataWithKeys.length;i++){
-        dataWithKeys[i].date = new Date(dataWithKeys[i].date).toLocaleDateString('de-DE', options);
-      }
+    }else{
 
-      thisComponent.requestData = dataWithKeys;
-  }).then(this.updateComponent_now.bind(this))
+    }
+    this.requestData = data;
+    this.updateComponent_now();
   }
 
   updateComponent_now(){

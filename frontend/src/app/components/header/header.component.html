@@ -1,7 +1,7 @@
 <div id="header">
-  <div id="btn_back" onclick="window.history.back()"></div>
+  <div id="btn_back" onclick="window.history.back()" *ngIf="isLoggedIn"></div>
   <h1 id="header-caption" routerLink="home">IDTool</h1>
-  <div id="header-login-indicator" routerLink="/login" *ngIf="!isLoginScreen">
+  <div id="header-login-indicator" *ngIf="isLoggedIn" (click)="performLogout()" >
     <span>John Doe</span>
     <span>&#x25BC;</span>
   </div>

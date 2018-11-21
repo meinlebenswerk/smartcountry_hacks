@@ -1,6 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AngularFireDatabase } from '@angular/fire/database';
+import * as firebase from 'firebase/app';
+
+import { AuthService } from './../../services/auth.service';
+
 @Component({
   selector: 'app-request-details-status',
   templateUrl: './request-details-status.component.html',
@@ -8,40 +13,35 @@ import { Router } from '@angular/router';
 })
 export class RequestDetailsStatusComponent implements OnInit {
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private router:Router) { }
+  data: any;
+  user: any;
+
+  constructor(private changeDetectorRef: ChangeDetectorRef, private router:Router, private auth: AuthService, public db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.data = {}
 
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        localStorage.setItem('myPage.expectSignIn', '1')
-        this.loadData();
-      } else {
-        localStorage.removeItem('myPage.expectSignIn')
-        this.router.navigateByUrl('/login')
+    this.auth.getAuthState().subscribe((user) => {
+      this.user = user
+      if(this.user){
+        this.loadData()
       }
-    })
+    });
+
   }
 
   loadData(){
     const urlParams = new URLSearchParams(window.location.search);
     const req_id = urlParams.get('request-id');
 
-    var user = firebase.auth().currentUser
+    let path = 'users/'+this.user.uid+'/requests/'+req_id
 
-    var baseRef = firebase.app().database().ref();
-    var usersRef = baseRef.child('users');
+    this.db.object(path).valueChanges().subscribe(this.dataUpdateHandler.bind(this))
+  }
 
-    var requestRef = usersRef.child(user.uid).child('requests').child(req_id);
-
-    //reformat the data from Firebase in an JS object/array :)
-    var request = requestRef.once('value').then((snap) => {
-      let data = snap.val();
-      console.log(this)
-      this.data = data;
-    }).then(this.updateComponent_now.bind(this))
-
+  dataUpdateHandler(data){
+    this.data = data
+    this.updateComponent_now()
   }
 
   updateComponent_now(){

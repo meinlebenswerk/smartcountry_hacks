@@ -24,7 +24,7 @@ export class RequestListDynamicComponent implements OnInit, OnChanges{
 
   show_details(id){
     //="request-details" [queryParams]="{request-id: request.request_id}"
-    this.router.navigate(['/request-details'], { queryParams: {"request-id": id})
+    this.router.navigate(['/request-details'], { queryParams: {"request-id": id}})
   }
 
   updateComponent_now(){

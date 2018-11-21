@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
-import {HomeDynamicComponent} from './views/home-dynamic/home-dynamic.component';
+import { HomeDynamicComponent } from './views/home-dynamic/home-dynamic.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { LoginComponent } from './views/login/login.component';
@@ -16,11 +16,23 @@ import { RequestDetailsComponent } from './views/request-details/request-details
 import { NewRequestComponent } from './views/new-request/new-request.component';
 import { RequestDetailsStatusComponent } from './components/request-details-status/request-details-status.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { environment } from './../environments/environment';
+
+
+//userdata service:
+import { UserdataService } from './services/userdata.service';
+
+//test service::
+import { AuthService } from './services/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HomeDynamicComponent
+    HomeDynamicComponent,
     HeaderComponent,
     FilterComponent,
     LoginComponent,
@@ -34,9 +46,14 @@ import { RequestDetailsStatusComponent } from './components/request-details-stat
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+
+    AngularFireModule.initializeApp(environment.firebase, 'smartcountry-dev'),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
+
   ],
-  providers: [],
+  providers: [ UserdataService, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

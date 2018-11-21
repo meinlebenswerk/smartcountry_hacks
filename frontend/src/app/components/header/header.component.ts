@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
 import {Router} from '@angular/router';
+
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,16 +9,35 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isLoginScreen = true;
+  user: any;
+  isLoggedIn = false;
 
-  constructor(location:Location, router:Router) {
-    router.events.subscribe((val) => {
-      this.isLoginScreen = location.path().includes('login');
-    });
+  constructor(private router:Router, private auth: AuthService) {
   }
 
   ngOnInit() {
+    this.auth.getAuthState().subscribe((user) => {
+      this.user = user
+      if(this.user){
+        this.isLoggedIn = true;
+      }else{
+        this.isLoggedIn = false;
+      }
+    });
+  }
 
+  performLogout(){
+    this.auth.logout().then(this.afterLogoutHook.bind(this),function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage)
+    })
+  }
+
+  afterLogoutHook(){
+    this.isLoggedIn = false
+    this.router.navigateByUrl('/login')
   }
 
 }

@@ -1,7 +1,22 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs'
 
-@Injectable()
-export class UserDataService {
-    public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+@Injectable({
+  providedIn: 'root'
+})
+
+export class UserdataService {
+
+
+
+  userAuthChange: Subject<boolean>;
+  isUserAutheticated: boolean;
+
+  constructor() {
+    this.isUserAutheticated = false;
+    this.userAuthChange = new Subject();
+   }
+
+
+
 }
