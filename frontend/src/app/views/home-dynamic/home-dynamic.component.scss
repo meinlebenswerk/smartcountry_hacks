@@ -15,7 +15,7 @@
   #requests {
     flex-direction: row;
 
-    & > app-request-list {
+    & > app-request-list-dynamic {
       width: calc(100% - 226px);
       position: absolute;
     }

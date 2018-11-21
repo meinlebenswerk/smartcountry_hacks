@@ -3,17 +3,17 @@
     {
       "type":"Personalausweis",
       "longname":"Personalausweis beantragen/verlängern:",
-      "isQuestionActive": [true,true,true,false]
+      "isQuestionActive": [true,true,true,false,true]
     },
     {
       "type":"Reisepass",
       "longname":"Reisepass beantragen/verlängern:",
-      "isQuestionActive": [true,true,true,false]
+      "isQuestionActive": [true,true,true,false,true]
     },
     {
       "type":"Addressänderung",
       "longname":"Addressänderung beantragen:",
-      "isQuestionActive": [true,true,true,true]
+      "isQuestionActive": [true,true,true,true,true]
     }],
   "qdata" : [
     {
@@ -34,6 +34,10 @@
     {
       "name":"old_address",
       "longname":"alte Addresse:",
+      "type": "value"
+    },{
+      "name":"signature",
+      "longname":"bitte hier unterschreiben:",
       "type": "value"
     }]
 }

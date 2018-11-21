@@ -1,6 +1,7 @@
 @import "../../../assets/css/colors";
 
 #filters {
+  z-index: 100000;
   margin: 12px 5%;
   padding: 0;
   border: 1px solid $color-secondary;

@@ -18,7 +18,16 @@
   height: 160px;
   width: 100%;
   display: contents;
-  background: lightgrey;
+
+  background: url("../../../assets/images/document.svg");
+  background-repeat: no-repeat;
+  background-color: lightgrey;
+  background-position: center;
+
+  background-size: 50%;
+
+  border-radius: 20px;
+
 }
 
 .request-card-btn {

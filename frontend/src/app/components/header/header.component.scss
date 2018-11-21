@@ -6,6 +6,8 @@
   height: 80px;
   display: flex;
   align-items: center;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #header-caption {
@@ -18,7 +20,7 @@
 
 #header-login-indicator {
   height: 50px;
-  width: 200px;
+  width:  200px;
   margin: 15px;
   vertical-align: middle;
   background-color: $color-secondary;
@@ -35,12 +37,18 @@
 
   & > span:last-child {
     padding: 16px;
+    background-image: url("../../../assets/images/logout.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: invert(1.0);
   }
 }
 
 #btn_back {
-  width: 100px;
-  height: 100px;
+  position: relative;
+  left: 30px;
+  width: 25px;
+  height: 25px;
   background-image: url("../../../assets/images/arrow_back.svg");
   background-repeat: no-repeat;
   background-position: center;

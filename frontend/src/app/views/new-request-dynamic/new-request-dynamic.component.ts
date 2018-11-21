@@ -1,3 +1,7 @@
+//hack to use external cdn lib
+declare var SignaturePad: any;
+
+
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import external_data from './requestTypes.json'
@@ -22,6 +26,9 @@ export class NewRequestDynamicComponent implements OnInit {
 
   user: any;
 
+  signaturePad: any;
+  canvas: any;
+
   constructor(private router:Router, private auth: AuthService, public db: AngularFireDatabase) { }
 
   ngOnInit() {
@@ -37,6 +44,8 @@ export class NewRequestDynamicComponent implements OnInit {
         this.loadPersonalData()
       }
     });
+
+    setTimeout(this.checkCanvas.bind(this),100);
   }
 
   loadPersonalData(){
@@ -57,6 +66,22 @@ export class NewRequestDynamicComponent implements OnInit {
 
   getSelectedQuestionName(){
     return this.possibleRequests[this.selectedCategory].type
+  }
+
+  resizeCanvas() {
+    var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+    this.canvas.width = this.canvas.offsetWidth * ratio;
+    this.canvas.height = this.canvas.offsetHeight * ratio;
+    this.canvas.getContext("2d").scale(ratio, ratio);
+    this.signaturePad.clear(); // otherwise isEmpty() might return incorrect value
+  }
+
+  checkCanvas(){
+    this.canvas = document.getElementById("sign-canvas");
+    this.signaturePad = new SignaturePad(this.canvas);
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
   }
 
   submitButtonListener(){
