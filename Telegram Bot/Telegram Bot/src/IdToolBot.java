@@ -112,6 +112,6 @@ public class IdToolBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "760475031:AAG84cQHfbchyj7msJFYEPPMpeybHdFcYOw";
+        return "<API Key>";
     }
 }
