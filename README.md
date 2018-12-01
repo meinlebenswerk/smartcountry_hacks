@@ -1,7 +1,9 @@
 # IDTool
-
 ### Hackathon project for SmartCountry{hacks} in Berlin
 #### by team "A Small Loan of a Million $'s"
+
+
+Since the hackathon is over, the firebase backend was shut down, so in order to try this project on your own, you have to replace the firebase API-Keys in the project with your own :)
 
 ## Backend
 
